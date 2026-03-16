@@ -2,22 +2,29 @@
 
 REST API for expense management and CRM.
 
-## Setup
+## Quick Start
 
 ```bash
-npm init -y
-npm install express cors helmet pg redis jsonwebtoken bcrypt dotenv
-npm install -D typescript @types/node @types/express ts-node nodemon
-npx tsc --init
+cp .env .env.local  # optional override
+docker-compose up -d  # start Postgres + Redis
+npm install
+npm run dev
 ```
 
-## Environment
+## Scripts
 
-Copy `.env.example` to `.env` and configure PostgreSQL connection.
+- `npm run dev` — Start with ts-node + nodemon (hot reload)
+- `npm run build` — Compile TypeScript to `dist/`
+- `npm start` — Run compiled JS from `dist/`
 
-## Run
+## Project Structure
 
-```bash
-npm run dev  # ts-node + nodemon
-npm run build && npm start
+```
+src/
+├── index.ts          # Express app entry
+├── config/           # DB, Redis, env configuration
+├── routes/           # API endpoints
+├── middleware/       # Auth, validation, error handling
+├── models/           # Data models / SQL queries
+└── utils/            # Helpers
 ```
