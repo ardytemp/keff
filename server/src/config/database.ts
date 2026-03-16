@@ -4,7 +4,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-pool.on('error', (err) => {
+pool.on('error', (err: any) => {
   console.error('PostgreSQL connection error:', err);
 });
 
