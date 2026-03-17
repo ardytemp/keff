@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import path from 'path';
 import pool from './config/database';
 import { authenticate } from './middleware/auth';
 
@@ -18,6 +19,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../../public')));
 
 // Public
 app.use('/api/auth', authRoutes);
